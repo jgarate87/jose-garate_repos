@@ -1,0 +1,3 @@
+Tribu ID: 1
+id,Nombre Repositorio,Tribu,Organización,coverage,codeSmells,bugs,vulnerabilities,hotspots,verificationState,state
+1,mirepo,mitribu,BDP,78%,600,200,300,500,NO_API,Enable
