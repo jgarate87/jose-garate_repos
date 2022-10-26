@@ -4,7 +4,7 @@ import { MetricasServicios } from '../servicios/metricas.service';
 import { CrearMetricasDto, ActualizarMetricasDto } from '../dtos/metricas.dto';
 import { ApiTags } from '@nestjs/swagger';
 
-@ApiTags('Entidad Metrics')
+@ApiTags('Entidad Metricas')
 @Controller('metricas')
 export class MetricasControlador {
   constructor(private metricasService: MetricasServicios) { }

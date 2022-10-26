@@ -18,23 +18,23 @@ import {
   import { RepositoriosService } from '../servicios/repositorios.service';
   import { ApiTags } from '@nestjs/swagger';
   
-  @ApiTags('Endpoint para obtener métricas y archivo .csv')
-  @Controller('metadata')
+  @ApiTags('Métricas y archivo .csv')
+  @Controller('dashboard')
   export class RepositoriosMetricaControlador {
     constructor(private repositoriosServicio: RepositoriosService) { }
   
-    @Get('report/:tribuId')
+    @Get('csv/:tribuId')
     async getFile(@Param('tribuId') tribuId: number,@Res({ passthrough: true }) res: Response): Promise<StreamableFile> {
       await this.repositoriosServicio.generateReport(tribuId)
-      const file = createReadStream(join(process.cwd(), 'report.csv'));
+      const file = createReadStream(join(process.cwd(), 'reporte.csv'));
       res.set({
         'Content-Type': 'text/plain',
-        'Content-Disposition': 'attachment; filename="report.csv"',
+        'Content-Disposition': 'attachment; filename="reporte.csv"',
       });
       return new StreamableFile(file);
     }
   
-    @Get(':tribuId')
+    @Get('Json/:tribuId')
     @HttpCode(HttpStatus.ACCEPTED)
     getMetrics(@Param('tribuId') tribuId: number) {
       return this.repositoriosServicio .getMetrics(tribuId);

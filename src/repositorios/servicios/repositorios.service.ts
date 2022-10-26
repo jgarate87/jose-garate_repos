@@ -195,8 +195,8 @@ export class RepositoriosService {
 
   async generateReport(idTribu: number) {
 
-    const fileReport: string = 'report.csv';
-    const logger = fs.createWriteStream('report.csv', { flags: 'w' })
+    const fileReport: string = 'reporte.csv';
+    const logger = fs.createWriteStream('reporte.csv', { flags: 'w' })
 
     logger.write(`Tribu ID: ${idTribu}\n`)
     logger.write(`id,Nombre Repositorio,Tribu,Organización,coverage,codeSmells,bugs,vulnerabilities,hotspots,verificationState,state\n`)
