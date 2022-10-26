@@ -16,8 +16,8 @@ async function bootstrap() {
   );
   app.useGlobalInterceptors(new ClassSerializerInterceptor(app.get(Reflector)));
   const config = new DocumentBuilder()
-    .setTitle('API reto nodejs')
-    .setDescription('Muestra todos los endpoint y DTOs')
+    .setTitle('Challenger - NestJs - Jose Garate')
+    .setDescription('EndPoints de una API Rest para manejo de Repositorios')
     .setVersion('1.0')
     .build();
   const document = SwaggerModule.createDocument(app, config);

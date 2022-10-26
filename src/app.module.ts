@@ -24,7 +24,7 @@ import { AppController } from './app.controller';
   RepositoriosModule,
   MetricasModule
   ],
-  controllers: [AppController],
+  controllers: [],
   providers: [AppService],
 })
 export class AppModule {}
