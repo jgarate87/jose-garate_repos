@@ -19,7 +19,7 @@ export class OrganizacionServicios {
   }
 
   findAll() {
-    //return this.organizations;
+   
     return this.organizacionRepo.find(
       {
         relations: ['tribes'],

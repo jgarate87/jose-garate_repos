@@ -1,17 +1,12 @@
-import { Injectable, NotFoundException, Inject, StreamableFile, } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Equal, Repository, MoreThan, Between } from 'typeorm';
-import { HttpModule, HttpService } from '@nestjs/axios';
+import {  Repository, MoreThan, Between } from 'typeorm';
+import {  HttpService } from '@nestjs/axios';
 import * as fs from 'fs';
-import { parse } from 'json2csv';
-
-
-import { Repositorios, repoEstados, registrarEstados } from '../entidades/repositorios.entity'
+import { Repositorios, repoEstados } from '../entidades/repositorios.entity'
 import { CrearRepositorioDto, ActualizarRepositorioDto } from '../dtos/repositorios.dto';
-
 import { TribusServicios } from './../../tribus/servicios/tribus.service'
-import { Tribus } from './../../tribus/entidades/tribus.entity'
-import { json } from 'stream/consumers';
+
 
 
 @Injectable()
@@ -35,7 +30,7 @@ export class RepositoriosService {
   }
 
   findAll() {
-    //return this.organizations;
+   
     return this.repositoriesRepo.find({
       relations: ['tribe', 'metrics'],
     });
@@ -77,7 +72,6 @@ export class RepositoriosService {
   async getVerificationState(idRepository: number) {
     let naturalLanguageState: string = 'No encontrado'
     const verificationCode = [
-      //{ code: 0, state: "No encontrado" },
       { code: 604, state: "Verificado" },
       { code: 605, state: "En espera" },
       { code: 606, state: "Aprobado" },
@@ -184,9 +178,7 @@ export class RepositoriosService {
           verificationState: stateRepo,
           state: stateCode.find((code) => code.code == data.state)?.state,
         }
-        console.log(datamodel);
-
-        modelResponse.push(datamodel)
+          modelResponse.push(datamodel)
       }))
 
     const response = JSON.parse(JSON.stringify(modelResponse))
